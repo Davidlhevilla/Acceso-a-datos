@@ -14,6 +14,11 @@ public class Main {
 //		AnimalDAO.insertAnimal(a);
 //		AnimalDAO.deleteAnimalByNombre("Ardilla");
 //		AnimalDAO.deleteAllAnimal();
+		
+		Animal a = AnimalDAO.findById(2);
+		a.setPeso_aproximado(1.00);
+		AnimalDAO.updateAnimal(a);
+		
 		ArrayList<Animal> animales = AnimalDAO.findAllAnimales();
 		for(int i=0; i< animales.size();i++) {
 			System.out.println(animales.get(i));

@@ -12,6 +12,26 @@ public abstract class AnimalDAO {
 	//no hace falta inicializar la clase con abstract. ya que solo vamos a usar sus metodos.
 	
 	private static Connection connection;
+	//Modificar un animal
+	public static void updateAnimal (Animal animal) {
+		connection = openConnection();
+		
+		String query="UPDATE animales SET nombre= ?, habitad= ?, peso_aproximado= ? where id = ?";
+		
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, animal.getNombre());
+			ps.setString(2, animal.getHabitad());
+			ps.setDouble(3, animal.getPeso_aproximado());
+			ps.setInt(4, animal.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		closeConnection();
+		
+	}
 	
 	//buscar todos los animales
 	public static ArrayList<Animal> findAllAnimales(){
