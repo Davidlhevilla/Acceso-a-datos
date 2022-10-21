@@ -1,5 +1,7 @@
 package prZoologicoDAO;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,8 +14,11 @@ public class Main {
 //		AnimalDAO.insertAnimal(a);
 //		AnimalDAO.deleteAnimalByNombre("Ardilla");
 //		AnimalDAO.deleteAllAnimal();
-		Animal a = AnimalDAO.findById(2);
-		System.out.println(a);
+		ArrayList<Animal> animales = AnimalDAO.findAllAnimales();
+		for(int i=0; i< animales.size();i++) {
+			System.out.println(animales.get(i));
+		}
+		
 	}
 
 }
