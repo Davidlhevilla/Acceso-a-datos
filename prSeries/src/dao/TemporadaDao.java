@@ -27,7 +27,7 @@ public class TemporadaDao implements Dao<Temporada>{
 		// TODO Auto-generated method stub
 		connection = openConnection();
 		
-		String query = "insert into temporadas ( num_temporada, titulo, "
+		String query = "insert into temporadas (num_temporada, titulo, "
 				+"serie_id) values (?,?,?)";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
