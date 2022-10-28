@@ -2,15 +2,18 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import pojo.Serie;
+
 import util.DatabaseConnection;
 
 public class SerieDao implements Dao<Serie> {
 	
 	private static Connection connection;
+	
 	public SerieDao () {
 		
 	}
@@ -23,9 +26,30 @@ public class SerieDao implements Dao<Serie> {
 
 	@Override
 	public Serie buscarPorId(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		connection = openConnection();
+		String query = "Select * from series where id= ?";
+		Serie serie = null;
+		
+		try {
+			PreparedStatement ps=connection.prepareStatement(query);
+			ps.setInt(1, i);
+			ResultSet rs =  ps.executeQuery();
+				while (rs.next()) {
+					serie = new Serie(i,
+						rs.getString("titulo"),
+						rs.getInt("edad"),
+						rs.getString("plataforma"),
+						null);
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return serie;
 	}
+	
+	
+
 
 	@Override
 	public void insertar(Serie serie) {

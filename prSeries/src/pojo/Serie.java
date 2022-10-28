@@ -28,6 +28,8 @@ public class Serie {
 		this.temporadas = temporadas;
 	}
 	
+	
+	
 	public int getId() {
 		return id;
 	}
