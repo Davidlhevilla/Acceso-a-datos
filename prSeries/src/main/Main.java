@@ -13,6 +13,9 @@ public class Main {
 		
 		//Serie serie = new Serie("Los Simpsons", 7, "Disney Plus");
 		SerieDao serieDao = new SerieDao();
+		
+		
+		
 //		serieDao.insertar(serie);
 		
 	//	System.out.println(serieDao.buscarPorId(1));
@@ -35,8 +38,11 @@ public class Main {
 //		for(Serie serie : series) {
 //			System.out.println(serie.getTitulo());
 //		}
+		
+		
 		ArrayList<Temporada> temporadas = serieDao.obtenerTemporadas(s);
 		for(Temporada temporada : temporadas) {
+			
 			System.out.println(temporada);
 		}
 	}
