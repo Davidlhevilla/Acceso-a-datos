@@ -29,7 +29,22 @@ public class Main {
 //		Serie s=new Serie("The mandalorian",13,"Disney Plus");
 //		serieDao.insertar(s);
 		
-		Serie s =serieDao.buscarPorId(1);
+		ArrayList<Serie> series = serieDao.buscarTodos();
+		
+		for(Serie serie : series) {
+			System.out.println("SERIE: "+serie.getTitulo());
+			for(Temporada temporada : serie.getTemporadas()) {
+				System.out.println("TEMPORADA: "+temporada.getTitulo());
+			}
+		}
+		
+		
+		
+		
+//		Serie s =serieDao.buscarPorId(1);
+		
+		
+		
 //		s.setEdad(18);
 //		serieDao.modificar(s);
 //		
@@ -40,11 +55,34 @@ public class Main {
 //		}
 		
 		
-		ArrayList<Temporada> temporadas = serieDao.obtenerTemporadas(s);
-		for(Temporada temporada : temporadas) {
-			
-			System.out.println(temporada);
-		}
+		
+		
+		
+		
+//		Temporada temporada1=new Temporada(1,"Temporada 1",);
+//		ArrayList<Temporada> temporadas = serieDao.obtenerTemporadas(s);
+//		for(Temporada temporada : temporadas) {
+//			
+//			System.out.println(temporada);
+//		}
+		
+		
+		
+//		SerieDao serieDao = new SerieDao();
+//		TemporadaDao temporadaDao = new TemporadaDao();
+//		
+//		Serie s = serieDao.buscarPorId(3);
+//		Temporada t1 = new Temporada(1, "The Mandalorian Season 1", s);
+//		Temporada t2 = new Temporada(2, "The Mandalorian Season 2", s);
+//		Temporada t3 = new Temporada(3, "The Mandalorian Final Season", s);
+//		temporadaDao.insertar(t1);
+//		temporadaDao.insertar(t2);
+//		temporadaDao.insertar(t3);
+//		temporadaDao.borrarPorSerie(3);
+		
+//		Serie s = serieDao.buscarPorId(1);
+//		serieDao.borrar(s);
+		
 	}
 
 }
