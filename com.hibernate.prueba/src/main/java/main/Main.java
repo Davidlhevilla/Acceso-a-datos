@@ -16,6 +16,15 @@ public class Main {
 	public static void main(String[] args) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		
+		session.beginTransaction();
+		//Lo que queramos hacer
+		
+		session.getTransaction().commit();
+		
+		
+		
 //
 //		Animal a1 = new Animal("Yorkshire", "Casa", new BigDecimal(1));
 //		
