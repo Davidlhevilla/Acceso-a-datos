@@ -13,6 +13,7 @@ import pojo.Ejercicio;
 
 
 
+
 public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 	
 	
@@ -34,8 +35,29 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
+				ArrayList<Ejercicio>ejercicios = new ArrayList<Ejercicio>();
 				cliente = new Cliente(rs.getInt("id"), rs.getString("nombre"), rs.getInt("edad"),
 						rs.getString("sexo"),null);
+				
+				
+				String query_ejercicio = "select * from ejercicios where cliente_id = ?";
+				PreparedStatement ps_ejercicios = connection.prepareStatement(query_ejercicio);
+				ps_ejercicios.setInt(1, rs.getInt("id")); 
+				ResultSet rs_ejercicios = ps_ejercicios.executeQuery();
+				
+				while(rs_ejercicios.next()) {
+					Ejercicio ejercicio = new Ejercicio(
+							rs_ejercicios.getInt("id"),
+							rs_ejercicios.getString("nombre"),
+							rs_ejercicios.getInt("repeticiones"),
+							rs_ejercicios.getInt("series")
+							);
+					ejercicios.add(ejercicio);
+					
+				}
+				cliente.setEjercicios(ejercicios);
+				
+				
 				listaCliente.add(cliente);
 			}
 
@@ -121,7 +143,7 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		ArrayList<Ejercicio> ejercicios = new ArrayList<>();
 		
 		connection = openConnection();
-		String query = "SELECT * FROM ejercicio WHERE ejercicio_id = ?";
+		String query = "SELECT * FROM ejercicios WHERE cliente_id = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -153,7 +175,7 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		ArrayList<Ejercicio> ejercicios = new ArrayList<>();
 		
 		connection = openConnection();
-		String query = "SELECT * FROM ejercicio WHERE ejercicio_id = ?";
+		String query = "SELECT * FROM ejercicios WHERE ejercicio_id = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
@@ -183,7 +205,7 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 
 	@Override
 	public void borrar(Cliente cliente) {
-int cliente_id = cliente.getId();
+		int cliente_id = cliente.getId();
 		
 		EjercicioDao ejercicioDao = new EjercicioDao();
 		ejercicioDao.borrarPorCliente(cliente_id);

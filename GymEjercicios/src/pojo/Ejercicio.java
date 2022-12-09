@@ -23,7 +23,14 @@ public class Ejercicio {
 		this.series = series;
 		this.cliente = cliente;
 	}
-
+	public Ejercicio(int id, String nombre, int repeticiones, int series) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.repeticiones = repeticiones;
+		this.series = series;
+		
+	}
 
 
 	public Ejercicio(String nombre, int repeticiones, int series, Cliente cliente) {

@@ -88,8 +88,7 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 		// TODO Auto-generated method stub
 				connection = openConnection();
 
-				String query = "insert into ejercicios (nombre,repeticiones,series "
-				+ "cliente_id) values (?,?,?,?)";
+				String query = "insert into ejercicios (nombre, repeticiones, series, cliente_id) values (?,?,?,?)";
 				try {
 					PreparedStatement ps = connection.prepareStatement(query);
 					ps.setString(1, t.getNombre());
@@ -108,9 +107,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 
 	@Override
 	public void modificar(Ejercicio ejercicio) {
-connection = openConnection();
+		connection = openConnection();
 		
-		String query="UPDATE ejercicios SET id= ?, nombre= ?, repeticiones= ?, series= ? where id = ?";
+		String query="UPDATE ejercicios SET id= ?, nombre= ?,repeticiones= ?, series= ? where id = ?";
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
