@@ -51,6 +51,7 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 
 		return listaEjercicios;
 	}
+	
 
 	@Override
 	public Ejercicio buscarPorId(int i) {
@@ -166,6 +167,43 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 		closeConnection();
 	}
 	
+	public void eliminarTableEjercicios() {
+        connection=openConnection();
+        String query = "drop table ejercicios";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
+
+	public void crearTableEjercicios() {
+        connection=openConnection();
+        String query = "CREATE TABLE ejercicios(\n"
+        		+ "	id INT PRIMARY KEY AUTO_INCREMENT,\n"
+        		+ "    nombre VARCHAR(100) NOT NULL,\n"
+        		+ "	repeticiones INT NOT NULL,\n"
+        		+ "    series INT NOT NULL,\n"
+        		+ "    cliente_id INT NOT NULL,\n"
+        		+ "    CONSTRAINT fk_ejercicios_cliente\n"
+        		+ "		FOREIGN KEY(cliente_id)\n"
+        		+ "        REFERENCES cliente(id)\n"
+        		+ ");";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
+
 	
 
 }

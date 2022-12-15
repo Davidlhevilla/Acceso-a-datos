@@ -69,6 +69,36 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 
 		return listaCliente;
 	}
+	public ArrayList<Cliente> buscarPorSexo(String sexo){
+		ArrayList<Cliente>clientes = new ArrayList<Cliente>();
+		
+		
+		connection = openConnection();
+		Cliente cliente=null;
+		
+		String query="Select * from cliente where sexo = ?";
+		 
+		try {
+			PreparedStatement 	ps = connection.prepareStatement(query);
+			 ps.setString(1,sexo);
+			 ResultSet rs = ps.executeQuery();
+			 while (rs.next()) {
+				 cliente = new Cliente(
+						 rs.getInt("id"),
+						 rs.getString("nombre"),
+						 rs.getInt("edad"),
+						 sexo,
+						null);
+				 clientes.add(cliente);
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}closeConnection();
+		
+		 return clientes;
+	}
+	
 
 	@Override
 	public Cliente buscarPorId(int i) {
@@ -229,5 +259,40 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		closeConnection();	
 		
 	}
+	public void eliminarTableCliente() {
+        connection=openConnection();
+        String query = "drop table cliente";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
+	
+	public void crearTableCliente() {
+        connection=openConnection();
+        String query = "CREATE TABLE cliente(\n"
+        		+ " id INT PRIMARY KEY AUTO_INCREMENT,\n"
+        		+ " nombre VARCHAR(100) UNIQUE NOT NULL,\n"
+        		+ " edad INT,\n"
+        		+ " sexo VARCHAR(10) NOT NULL\n"
+        		+ " \n"
+        		+ " \n"
+        		+ ");";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        closeConnection();
+    }
+
 
 }

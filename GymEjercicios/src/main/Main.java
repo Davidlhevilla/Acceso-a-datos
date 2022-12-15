@@ -23,8 +23,14 @@ public class Main {
 		
 		EjercicioDao ed=new EjercicioDao();
 		
-		//Creacion de cliente antes del ejercicio
-		Cliente c=new Cliente("Miguel",38,"H",null);
+		
+		ed.eliminarTableEjercicios();
+		cd.eliminarTableCliente();
+		cd.crearTableCliente();
+		ed.crearTableEjercicios();
+		
+//		Creacion de cliente antes del ejercicio
+		Cliente c=new Cliente("Jenaro",30,"Hombre",null);
 		
 		
 		cd.insertar(c);
@@ -53,9 +59,10 @@ public class Main {
 			}
 			System.out.println("");
 		}
-
 		
+		System.out.println("----------------------------");
 		
+		System.out.println(cd.buscarPorSexo("Hombre"));
 
 	}
 

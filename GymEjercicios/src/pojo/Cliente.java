@@ -29,6 +29,9 @@ public class Cliente {
 		this.sexo = sexo;
 		this.ejercicios = ejercicios;
 	}
+	
+	
+
 
 
 	public String getNombre() {

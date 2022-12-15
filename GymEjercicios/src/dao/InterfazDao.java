@@ -43,4 +43,6 @@ public interface InterfazDao<T> {
 	
 	public void borrar(T t);
 	
+	
+	
 }
