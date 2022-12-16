@@ -22,7 +22,10 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 	public ClienteDao() {
 		
 	}
-
+	
+	/**
+	 * Método para buscar a todos los clientes que hay en base de datos.
+	 */
 	@Override
 	public ArrayList<Cliente> buscarTodos() {
 		connection = openConnection();
@@ -69,6 +72,11 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 
 		return listaCliente;
 	}
+	/**
+	 * Método que busca a clientes por sexo.
+	 * @param sexo Variable sexo que se le pasa a la funcion para que busque.
+	 * @return devuelve los clientes que tienen el sexo seleccionado.
+	 */
 	public ArrayList<Cliente> buscarPorSexo(String sexo){
 		ArrayList<Cliente>clientes = new ArrayList<Cliente>();
 		
@@ -98,7 +106,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		
 		 return clientes;
 	}
-	
+	/**
+	 * Método para buscar un cliente por id
+	 */
 
 	@Override
 	public Cliente buscarPorId(int i) {
@@ -126,7 +136,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		closeConnection();
 		return cliente;
 	}
-
+	/**
+	 * Método para insertar un cliente en base de datos.
+	 */
 	@Override
 	public void insertar(Cliente cliente) {
 		connection = openConnection();
@@ -146,7 +158,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		closeConnection();
 		
 	}
-
+	/**
+	 * Método para modificar una variable del cliente.
+	 */
 	@Override
 	public void modificar(Cliente cliente) {
 		connection = openConnection();
@@ -168,7 +182,11 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		
 	}
 	
-	
+	/**
+	 * Método que muestra todos los ejercicios de un cliente.
+	 * @param cliente variable que se le pasa por parametro para buscar sus ejercicios
+	 * @return devuelve ejercicios.
+	 */
 	public ArrayList<Ejercicio> obtenerEjercicios(Cliente cliente){
 		ArrayList<Ejercicio> ejercicios = new ArrayList<>();
 		
@@ -200,7 +218,11 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		return ejercicios;
 	}
 	
-	
+	/**
+	 * Método para obtener ejercicios por el id del cliente
+	 * @param cliente_id parametro que le pasa para obtener todos sus ejercicios
+	 * @return devuelve ejercicios del cliente
+	 */
 	public ArrayList<Ejercicio> obtenerEjerciciosPorClienteId(int cliente_id){
 		ArrayList<Ejercicio> ejercicios = new ArrayList<>();
 		
@@ -231,7 +253,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		
 		return ejercicios;
 	}
-
+	/**
+	 * Método que borra a un cliente
+	 */
 
 	@Override
 	public void borrar(Cliente cliente) {
@@ -259,6 +283,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
 		closeConnection();	
 		
 	}
+	/**
+	 * Método que elimina la tabla cliente en  BD
+	 */
 	public void eliminarTableCliente() {
         connection=openConnection();
         String query = "drop table cliente";
@@ -273,6 +300,9 @@ public class ClienteDao extends ObjetoDao implements InterfazDao<Cliente>{
         closeConnection();
     }
 	
+	/**
+	 * Método que crea la tabla cliente en BD
+	 */
 	public void crearTableCliente() {
         connection=openConnection();
         String query = "CREATE TABLE cliente(\n"

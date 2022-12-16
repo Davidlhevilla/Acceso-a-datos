@@ -14,7 +14,10 @@ import pojo.Ejercicio;
 
 public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 	private static Connection connection;
-
+	
+	/**
+	 * Método que muestra tdos los ejercicios.
+	 */
 	@Override
 	public ArrayList<Ejercicio> buscarTodos() {
 		connection = openConnection();
@@ -52,7 +55,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 		return listaEjercicios;
 	}
 	
-
+	/**
+	 * Método que busca por id un ejercicio
+	 */
 	@Override
 	public Ejercicio buscarPorId(int i) {
 		connection = openConnection();
@@ -83,7 +88,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 
 		return ejercicio;
 	}
-
+	/**
+	 * Método para insertar un ejercicio en BD
+	 */
 	@Override
 	public void insertar(Ejercicio t) {
 		// TODO Auto-generated method stub
@@ -105,6 +112,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 
 		
 	}
+	/**
+	 * Método que modifica ejercicios BD
+	 */
 
 	@Override
 	public void modificar(Ejercicio ejercicio) {
@@ -127,7 +137,11 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 		closeConnection();
 		
 	}
-
+	
+	
+	/**
+	 * Método que borra ejercicios de BD
+	 */
 	@Override
 	public void borrar(Ejercicio t) {
 		connection = openConnection();
@@ -149,7 +163,10 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 	}
 	
 	
-	
+	/**
+	 * Método que borra de base de datos por el id del cliente
+	 * @param cliente_id
+	 */
 	
 	public void borrarPorCliente(int cliente_id) {
 		connection = openConnection();
@@ -166,7 +183,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 		}
 		closeConnection();
 	}
-	
+	/**
+	 * Método que elimina la tabla ejercicios de BD
+	 */
 	public void eliminarTableEjercicios() {
         connection=openConnection();
         String query = "drop table ejercicios";
@@ -180,7 +199,9 @@ public class EjercicioDao extends ObjetoDao implements InterfazDao<Ejercicio> {
 
         closeConnection();
     }
-
+	/**
+	 * Metodo que crea la tabla de ejercicios en BD
+	 */
 	public void crearTableEjercicios() {
         connection=openConnection();
         String query = "CREATE TABLE ejercicios(\n"

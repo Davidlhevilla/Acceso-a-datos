@@ -1,5 +1,9 @@
 package pojo;
-
+/**
+ * Pojo de Ejercicios 
+ * @author davidlhevilla
+ *
+ */
 public class Ejercicio {
 	private int id;
 	private String nombre;
@@ -13,7 +17,14 @@ public class Ejercicio {
 		super();
 	}
 
-
+	/**
+	 * Constructor del ejercicio
+	 * @param id id del ejercicio
+	 * @param nombre nombre del ejercicio
+	 * @param repeticiones repeticiones del ejercicio
+	 * @param series series del ejercicio
+	 * @param cliente cliente que tiene el ejercicio
+	 */
 
 	public Ejercicio(int id, String nombre, int repeticiones, int series, Cliente cliente) {
 		super();
@@ -23,6 +34,13 @@ public class Ejercicio {
 		this.series = series;
 		this.cliente = cliente;
 	}
+	/**
+	 * Constructor del ejercicio
+	 * @param id id del ejercicio
+	 * @param nombre nombre del ejercicio
+	 * @param repeticiones repeticiones del ejercicio
+	 * @param series series del ejercicio
+	 */
 	public Ejercicio(int id, String nombre, int repeticiones, int series) {
 		super();
 		this.id = id;
@@ -31,7 +49,13 @@ public class Ejercicio {
 		this.series = series;
 		
 	}
-
+	/**
+	 * Constructor del ejercicio
+	 * @param nombre nombre del ejercicio
+	 * @param repeticiones repeticiones del ejercicio
+	 * @param series series del ejercicio
+	 * @param cliente cliente que tiene el ejercicio
+	 */
 
 	public Ejercicio(String nombre, int repeticiones, int series, Cliente cliente) {
 		super();

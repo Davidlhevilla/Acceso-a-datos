@@ -1,7 +1,11 @@
 package pojo;
 
 import java.util.ArrayList;
-
+/**
+ * Pojo de Cliente
+ * @author davidlhevilla
+ *
+ */
 public class Cliente {
 	
 	private int id;
@@ -11,7 +15,13 @@ public class Cliente {
 	private ArrayList<Ejercicio> ejercicios;
 	
 	
-	
+	/**
+	 * 
+	 * @param nombre nombre del cliente
+	 * @param edad edad del cliente
+	 * @param sexo sexo del cliente
+	 * @param ejercicios ejercicios del cliente
+	 */
 	public Cliente(String nombre, int edad, String sexo, ArrayList<Ejercicio> ejercicios) {
 		super();
 		this.nombre = nombre;
@@ -20,7 +30,14 @@ public class Cliente {
 		this.ejercicios = ejercicios;
 	}
 
-
+	/**
+	 * Constructor del cliente
+	 * @param id id del cliente
+	 * @param nombre nombre del cliente
+	 * @param edad edad del cliente
+	 * @param sexo sexo del cliente
+	 * @param ejercicios ejercicios del cliente
+	 */
 	public Cliente(int id, String nombre, int edad, String sexo, ArrayList<Ejercicio> ejercicios) {
 		super();
 		this.id = id;
